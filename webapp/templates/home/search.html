@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="d-flex justify-content-between mt-2 border-bottom">
+    <h1 class="h2">Search</h1>
+</div>
+
+<div class="row mt-3">
+ {{data}}
+  {% if not data.err %}
+  <div class="row mt-2">
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <td>
+                    Country
+                </td>
+                <td>
+                    Group
+                </td>
+                <td>
+                    Currency
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Type
+                </td>
+                <td>
+                    Important
+                </td>
+                <td>
+                    Frequency
+                </td>
+                <td>
+                    Unit
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dt in data.hits %}
+            <tr>
+                <td>
+                    {{dt.country|default_if_none:""}}
+                </td>
+                <td>
+                    {{dt.group|default_if_none:""}}
+                </td>
+                <td>
+                    {{dt.currency|default_if_none:""}}
+                </td>
+                <td>
+                    {{dt.name}}
+                </td>
+                
+                <td>
+                    {{dt.type}}
+                </td>
+                <td>
+                    {{dt.importance}}
+                </td>
+                <td>
+                    {{dt.frequency}}
+                </td>
+                <td>
+                    {{dt.unit|default_if_none:""}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="col-lg-4 mt-3">
+    <div class="list-group">
+     <form action="{% url 'search' %}">
+      <div class="input-group mb-3">
+        <input type="text" name="q" class="form-control" placeholder="Search Gold, Nigeria, New Zealand or anything..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+      </div>
+     </form>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between mt-2 border-bottom">
+    <h1 class="h2">Country Indicators</h1>
+</div>
+<div class="row mt-2">
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <td>
+                    Category
+                </td>
+                <td>
+                    CategoryGroup
+                </td>
+                <td>
+                    LatestValueDate
+                </td>
+                <td>
+                    LatestValue
+                </td>
+                <td>
+                    HistoricalDataSymbol
+                </td>
+                <td>
+                    CreateDate
+                </td>
+                <td>
+                    FirstValueDate
+                </td>
+                <td>
+                    PreviousValue
+                </td>
+                <td>
+                    PreviousValueDate
+                </td>
+                <td>
+                    Frequency
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for indicator in indicators %}
+            <tr>
+                <td>
+                    {{indicator.Category}}
+                </td>
+                <td>
+                    {{indicator.CategoryGroup}}
+                </td>
+                <td>
+                    {{indicator.LatestValueDate}}
+                </td>
+                <td>
+                    {{indicator.LatestValue}}
+                </td>
+                
+                <td>
+                    {{indicator.HistoricalDataSymbol}}
+                </td>
+                <td>
+                    {{indicator.CreateDate}}
+                </td>
+                <td>
+                    {{indicator.FirstValueDate}}
+                </td>
+                <td>
+                    {{indicator.PreviousValue}}
+                </td>
+                <td>
+                    {{indicator.PreviousValueDate}}
+                </td>
+                <td>
+                    {{indicator.Frequency}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+

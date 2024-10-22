@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between mt-2 border-bottom">
+    <h1 class="h2">Markets</h1>
+</div>
+<div class="row mt-2">
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <td>
+                    Ticker
+                </td>
+                <td>
+                    Date
+                </td>
+                <td>
+                    Type
+                </td>
+                <td>
+                    State
+                </td>
+                <td>
+                    Last
+                </td>
+                <td>
+                    Close
+                </td>
+                <td>
+                    Close Date
+                </td>
+                <td>
+                    Yesterday
+                </td> 
+                <td>
+                    Day High
+                </td> 
+                <td>
+                    Day Low
+                </td> 
+                <td>
+                    Important
+                </td>
+                <td>
+                    Daily Change
+                </td>
+                <td>
+                    Weekly Change
+                </td>
+                <td>
+                    Monthly Change
+                </td>
+                <td>
+                    Yearly Change
+                </td>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for market in markets %}
+            <tr>
+                <td>
+                    {{market.Ticker}}
+                </td>
+                <td>
+                    {{market.Date}}
+                </td>
+                <td>
+                    {{market.Type}}
+                </td>
+                <td>
+                    {{market.state}}
+                </td>
+                <td>
+                    {{market.Last}}
+                </td>
+                <td>
+                    {{market.Close}}
+                </td>
+                <td>
+                    {{market.CloseDate}}
+                </td>
+                <td>
+                    {{market.yesterday}}
+                </td>
+                <td>
+                    {{market.day_high}}
+                </td>
+                <td>
+                    {{market.day_low}}
+                </td>
+                <td>
+                    {{market.Importance}}
+                </td>
+                <td>
+                    {{market.DailyChange}}
+                </td>
+                <td>
+                    {{market.WeeklyChange}}
+                </td>
+                <td>
+                    {{market.MonthlyChange}}
+                </td>
+                <td>
+                    {{market.YearlyChange}}
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+

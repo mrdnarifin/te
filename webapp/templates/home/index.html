@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block js %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mt-2 border-bottom">
+    <h1 class="h2">Home</h1>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var countries = JSON.parse("{{ countries|escapejs  }}");
+        const chart = Highcharts.chart('data', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'GDP Growth Rate vs Government Debt to GDP vs Current Account to GDP'
+            },
+            xAxis: {
+                categories: countries
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                column: {
+                    borderRadius: '25%'
+                }
+            },
+            series: [{
+                name: 'GDP Growth Rate',
+                data: [0.2, -0.3, -0.2, 0.8]
+            }, {
+                name: 'Government Debt to GDP',
+                data: [-49.7, 31.5, 39.3, 61.9]
+            }, {
+                name: 'Current Account to GDP',
+                data: [-1.5, 6.5, -6.9, -0.2]
+            }]
+        });
+
+        const chart2 = Highcharts.chart('data2', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Interest Rate vs Inflation Rate vs Unemployment Rate',
+                align: 'left'
+            },
+            subtitle: {
+                text:
+                    'Source: <a target="_blank" ' +
+                    'href="https://tradingeconomics.com/indicators?g=forecast">tradingeconomics</a>',
+                align: 'left'
+            },
+            xAxis: {
+                categories: countries,
+                crosshair: true,
+                accessibility: {
+                    description: 'Countries'
+                }
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [
+                {
+                    name: 'Interest Rate',
+                    data: [10.5, 3.25, 4.75, 2.25]
+                },
+                {
+                    name: 'Inflation Rate',
+                    data: [0.2, 1.6, 2.2, 0.61]
+                },
+                {
+                    name: 'Unemployment Rate',
+                    data: [3.0, 8.2, 4.6, 1.07]
+                }
+            ]
+        });
+
+        
+    });
+
+</script>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div id="data" style="height:800px;"></div>
+        </div>
+        <div class="col-lg-6">
+            <div id="data2" style="height:800px;"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

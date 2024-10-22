@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between mt-2 border-bottom">
+    <h1 class="h2">Economic Calendar</h1>
+</div>
+<div class="row mt-2">
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <td>
+                    Date
+                </td>
+                <td>
+                    Country
+                </td>
+                <td>
+                    Event
+                </td>
+                <td>
+                    Reference
+                </td>
+                <td>
+                    Actual
+                </td>
+                <td>
+                    Previous
+                </td>
+                <td>
+                    Forecast
+                </td>
+                <td>
+                    Important
+                </td>
+                <td>
+                    Symbol
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for calendar in calendars %}
+            <tr>
+                <td>
+                    {{calendar.Date}}
+                </td>
+                <td>
+                    {{calendar.Country}}
+                </td>
+                <td>
+                    {{calendar.Event}}
+                </td>
+                <td>
+                    {{calendar.Reference}}
+                </td>
+                
+                <td>
+                    {{calendar.Actual}}
+                </td>
+                <td>
+                    {{calendar.Previous}}
+                </td>
+                <td>
+                    {{calendar.Forecast}}
+                </td>
+                <td>
+                    {{calendar.Important}}
+                </td>
+                <td>
+                    {{calendar.Symbol}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="d-flex justify-content-between mt-2 border-bottom">
+    <h1 class="h2">News</h1>
+</div>
+<div class="row mt-3">
+    <div class="card-group">
+        {% for new in news|dictsort:"date"  %}
+        {% if new is not None %}
+        <div class="col-sm-3 p-1">
+            <div class="card">
+                <div class="card-body">
+                  <a href="https://tradingeconomics.com{{new.url}}" target="_blank" class="card-title"><h5>{{new.title|truncatechars:80}}</h5></a>
+                  <p class="card-text">{{new.description|truncatechars:200}}</p>
+                  <p class="card-text"><small class="text-muted">{{new.date}}</small> <span class="label bg-primary text-white">{{new.symbol}}</span></p>
+                </div>
+              </div>
+        </div>
+        
+        {% endif %}
+        {% endfor %}
+      </div>
+</div>
+{% endblock %}
+
+
+
